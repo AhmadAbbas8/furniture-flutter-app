@@ -1,0 +1,18 @@
+
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_const_constructors: true
+    use_enums: true
+    avoid_final_parameters: true
+    comment_references: true
+    unnecessary_await_in_return: true
+    unnecessary_const: true
+    unnecessary_constructor_name: true
+    unnecessary_new: true
+    unnecessary_null_checks: true
+    unnecessary_overrides: false
+    unnecessary_string_escapes: true
+    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+
