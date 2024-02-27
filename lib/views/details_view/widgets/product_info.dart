@@ -73,7 +73,7 @@ class ProductInfo extends StatelessWidget {
     bool isActive = false,
   }) {
     return Container(
-      margin: EdgeInsets.only(top: 5, right: 5),
+      margin: const EdgeInsets.only(top: 5, right: 5),
       padding: const EdgeInsets.all(5),
       height: 30.w,
       width: 30.w,
