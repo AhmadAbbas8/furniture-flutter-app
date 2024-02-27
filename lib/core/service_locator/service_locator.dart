@@ -1,4 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:furniture_flutter_app/models/productsRepoImpl.dart';
+import 'package:furniture_flutter_app/models/products_repo.dart';
+import 'package:furniture_flutter_app/view_model/categories_cubit/categories_cubit.dart';
+import 'package:furniture_flutter_app/view_model/product_cubit/product_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,13 +35,12 @@ class ServiceLocator {
           },
         ))));
 
-    // * DataSources
-
-
     // * Repository
+    instance.registerLazySingleton<ProductsRepo>(() =>
+        ProductsRepoImpl(apiConsumer: instance(), networkInfo: instance()));
 
-
-    // * UseCases
-
+    // * Bloc/Cubit
+    instance.registerFactory(() => CategoriesCubit(productsRepo: instance()));
+    instance.registerFactory(() => ProductCubit(productsRepo: instance()));
   }
 }

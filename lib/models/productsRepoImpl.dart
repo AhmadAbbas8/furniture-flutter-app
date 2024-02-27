@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import '../core/error/failure.dart';
 import '../core/network/api/api_consumer.dart';
@@ -22,12 +23,17 @@ class ProductsRepoImpl implements ProductsRepo {
   Future<Either<Failure, List<Category>>> fetchCategories() async {
     if (await _networkInfo.isConnected) {
       try {
-        var response = await _apiConsumer.get(EndPoints.categories);
-        List<Category> categories = [];
-        for (var val in response) {
-          categories.add(Category.fromJson(val));
+        Response response = await _apiConsumer.get(EndPoints.categories);
+        if(response.statusCode == 200){
+          List<Category> categories = [];
+          for (var val in response.data) {
+            categories.add(Category.fromJson(val));
+          }
+          return Right(categories);
+        }else{
+          return Left(ServerFailure());
         }
-        return Right(categories);
+
       } catch (e) {
         return Left(ServerFailure());
       }
@@ -40,12 +46,16 @@ class ProductsRepoImpl implements ProductsRepo {
   Future<Either<Failure, List<Product>>> fetchProducts() async {
     if (await _networkInfo.isConnected) {
       try {
-        var response = await _apiConsumer.get(EndPoints.products);
-        List<Product> products = [];
-        for (var val in response) {
-          products.add(Product.fromJson(val));
+        Response response = await _apiConsumer.get(EndPoints.products);
+        if(response.statusCode == 200){
+          List<Product> products = [];
+          for (var val in response.data) {
+            products.add(Product.fromJson(val));
+          }
+          return Right(products);
+        }else{
+          return Left(ServerFailure());
         }
-        return Right(products);
       } catch (e) {
         return Left(ServerFailure());
       }
