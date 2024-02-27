@@ -28,7 +28,7 @@ class HomeView extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: buildAppBar(),
-        body: HomeViewBody(),
+        body: const HomeViewBody(),
       ),
     );
   }

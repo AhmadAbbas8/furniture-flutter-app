@@ -18,13 +18,13 @@ class ProductDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(minHeight: 440.h),
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 90,
         left: 20,
         right: 20,
       ),
       // height: 500,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(12),
@@ -54,7 +54,7 @@ class ProductDescription extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: MaterialButton(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
