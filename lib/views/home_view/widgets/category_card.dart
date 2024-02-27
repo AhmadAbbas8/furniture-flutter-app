@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:furniture_flutter_app/core/utils/assets_manager.dart';
 import 'package:furniture_flutter_app/core/utils/colors_palette.dart';
 
 import '../../../core/widgets/title_text.dart';
@@ -51,7 +52,7 @@ class CategoryCard extends StatelessWidget {
                 child: AspectRatio(
                   aspectRatio: 1.15 / 1,
                   child: FadeInImage.assetNetwork(
-                    placeholder: "assets/spinner.gif",
+                    placeholder: AssetsManager.spinner,
                     image: category.image,
                     fadeInCurve: Curves.easeInQuart,
                     fadeOutCurve: Curves.bounceInOut,
