@@ -36,10 +36,7 @@ class HomeViewBody extends StatelessWidget {
           RecommendationProducts(
             products: [
               productDemo,
-              productDemo,
-              productDemo,
-              productDemo,
-              productDemo,
+
             ],
           )
         ],
