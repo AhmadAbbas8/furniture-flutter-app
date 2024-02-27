@@ -17,7 +17,7 @@ class DetailsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsPalette.kSecondaryColor,
       appBar: buildAppBar(context),
-      body: DetailsViewBody(),
+      body: DetailsViewBody(product: product),
     );
   }
 
