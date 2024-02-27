@@ -7,6 +7,7 @@ import 'package:furniture_flutter_app/core/utils/assets_manager.dart';
 import 'package:furniture_flutter_app/core/utils/colors_palette.dart';
 
 import '../../view_model/categories_cubit/categories_cubit.dart';
+import '../../view_model/product_cubit/product_cubit.dart';
 import 'widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -19,6 +20,10 @@ class HomeView extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               ServiceLocator.instance<CategoriesCubit>()..fetchCategories(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ServiceLocator.instance<ProductCubit>()..fetchProducts(),
         ),
       ],
       child: Scaffold(
