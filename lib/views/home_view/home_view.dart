@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:furniture_flutter_app/core/service_locator/service_locator.dart';
 import 'package:furniture_flutter_app/core/utils/assets_manager.dart';
 import 'package:furniture_flutter_app/core/utils/colors_palette.dart';
 
+import '../../view_model/categories_cubit/categories_cubit.dart';
 import 'widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -11,9 +14,17 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(),
-      body: HomeViewBody(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              ServiceLocator.instance<CategoriesCubit>()..fetchCategories(),
+        ),
+      ],
+      child: Scaffold(
+        appBar: buildAppBar(),
+        body: HomeViewBody(),
+      ),
     );
   }
 
