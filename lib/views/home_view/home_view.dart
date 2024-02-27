@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:furniture_flutter_app/core/utils/assets_manager.dart';
 import 'package:furniture_flutter_app/core/utils/colors_palette.dart';
 
+import 'widgets/home_view_body.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -11,6 +13,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
+      body: HomeViewBody(),
     );
   }
 
