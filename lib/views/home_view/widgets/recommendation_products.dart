@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:furniture_flutter_app/core/helpers/extensions/navigation_extensions.dart';
+import 'package:furniture_flutter_app/views/details_view/details_view.dart';
 
 import '../../../models/models/product_model.dart';
 import 'product_card.dart';
@@ -27,7 +29,7 @@ class RecommendationProducts extends StatelessWidget {
         ),
         itemBuilder: (context, index) => ProductCard(
           product: products[index],
-          onTap: () {},
+          onTap: () => context.push(DetailsView(product: products[index])),
         ),
       ),
     );
