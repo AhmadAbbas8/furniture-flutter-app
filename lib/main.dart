@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:furniture_flutter_app/bloc_observer.dart';
+import 'package:furniture_flutter_app/views/home_view/home_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
+  await ScreenUtil.ensureScreenSize();
   runApp(const FurnitureApp());
 }
 
@@ -9,10 +16,16 @@ class FurnitureApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Furniture Flutter App',
-      home: Scaffold(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Furniture Flutter App',
+        home: child,
+      ),
+      child: const HomeView(),
     );
   }
 }
